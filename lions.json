@@ -1,0 +1,15 @@
+[
+    {
+        "name": "",
+        "sprites": {
+            "left": "",
+            "right": "",
+            "up": "",
+            "down": "",
+            "win": "",
+            "lose": "",
+            "idle": ""
+        },
+        "sprite_index": 0
+    }
+]
