@@ -1,6 +1,12 @@
 const rhythm_app = Vue.createApp({
+    created () {
+        fetch('lions.json').then(response => response.json()).then(json => {
+           this.lions = json
+      })
+   },
     data() {
         return {
+            lions: [],
             gameStarted: false,
             gamePaused: false,
             score: 0,
