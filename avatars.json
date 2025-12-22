@@ -20,7 +20,7 @@
             "down": "",
             "idle": ""
         },
-        "icon": "",
+        "icon": "assets/imgs/dragon_icon-ph.png",
         "available": false
     }
 ]

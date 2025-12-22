@@ -1,13 +1,10 @@
-const lion = document.getElementById("lion");
-
-let spriteData = {};
-let currentKey = null;
-
+// credit to my cousin bc he is awesome at fixing my shit
 const vueApp = Vue.createApp({
 
   data() {
     return {
-      sprites: {},
+      avatars: [],          // loaded from JSON
+      avatarIndex: 0,       // current avatar (Lion)
       currentState: "idle",
       currentKey: null
     };
@@ -15,15 +12,24 @@ const vueApp = Vue.createApp({
 
   created() {
     fetch("avatars.json")
-      .then(res => res.json())
+      .then(response => response.json())
       .then(json => {
-        this.sprites = json.sprites;
+        this.avatars = json;
       });
   },
-
+  mounted() {
+    window.addEventListener("keydown", this.keyDown);
+    window.addEventListener("keyup", this.keyUp);
+ },
   computed: {
-    lionSrc() {
-      return this.sprites[this.currentState];
+    // gets current character
+    avatar() {
+      return this.avatars[this.avatarIndex];
+    },
+    // switches sprites based on current state
+    avatarSrc() {
+      if (!this.avatar) return "";
+      return this.avatar.sprites[this.currentState];
     }
   },
 
