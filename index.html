@@ -28,14 +28,23 @@
         </header>
         <main>
             <div id="app">
-                <h1>{{ title }}</h1>
+                <h1>Ttitle here</h1>
 
+                <!-- Selection -->
                 <div class="row">
-                    <div class="col" v-for="(avatar, index) in avatars">
-                        <div class="avatar-icon">
-                            <img src="{{ this.icon }}">
+                    <div class="col" v-for="(avatar, index) in sprites">
+                        <div class="avatar-icon" :src="avatar.icon" style="height: 100px">
                         </div>
                     </div>
+                </div>
+
+                <!-- The creature -->
+                <div class="container">
+                    <!-- Other Sprites -->
+                    <img v-if="isKeyPressed" :src="avatar.sprites.idle">
+                    <!-- Idle Sprite -->
+                    <img v-else :src="avatar.sprites.idle">
+
                 </div>
             </div>
         </main>
