@@ -1,6 +1,13 @@
 // credit to my cousin bc he is awesome at fixing my shit
 const vueApp = Vue.createApp({
 
+  created() {
+    fetch("avatars.json")
+      .then(response => response.json())
+      .then(json => {
+        this.avatars = json;
+      });
+  },
   data() {
     return {
       avatars: [],          // loaded from JSON
@@ -8,14 +15,6 @@ const vueApp = Vue.createApp({
       currentState: "idle",
       currentKey: null
     }
-  },
-
-  created() {
-    fetch("avatars.json")
-      .then(response => response.json())
-      .then(json => {
-        this.avatars = json;
-      });
   },
   mounted() {
     window.addEventListener("keydown", this.keyDown);
@@ -35,6 +34,7 @@ const vueApp = Vue.createApp({
   methods: {
     keyDown(e) {
       if (e.repeat) return;
+      if (this.currentState === "dead") return; // Ignore keys while dead
 
       const key = e.key.toLowerCase();
       this.currentKey = key;
@@ -47,14 +47,15 @@ const vueApp = Vue.createApp({
 
     keyUp(e) {
       if (e.key.toLowerCase() === this.currentKey) {
+        if (this.currentState !== "dead")
         this.currentState = "idle";
         this.currentKey = null;
       }
     },
     becomeDead() {
-        isDead.value = !isDead.value
+        this.isDead = !this.isDead
 
-        if (isDead.value === true) {
+        if (this.isDead === true) {
             this.currentState = "dead";
         } else {
             this.currentState = "idle";
