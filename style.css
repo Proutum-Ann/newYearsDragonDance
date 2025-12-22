@@ -5,7 +5,7 @@ body {
     --secondary: #ffac30;
     --accent: #ffd45e;
     --accent2: #ffec43;
-    color: #270000!important
+    color: #270000!important;
 }
 
 h1 {
@@ -22,7 +22,7 @@ main {
 }
 
 .character {
-    height: 100vh;
+    height: 50vw;
     background: var(--primary);
     margin-bottom: 5%;
     padding: 4%;
@@ -42,10 +42,14 @@ main {
 
 .the-row {
     background-color: rgba(0,0,0,0.5);
-    border-top: solid 3vh var(--accent);
-    border-bottom: solid 3vh var(--accent);
+    border-top: solid .5vw var(--accent);
+    border-bottom: solid .5vw var(--accent);
 }
 
 .avatar-icon:hover {
     transform: scale(1.2);
+}
+
+body {
+    border: none!important;
 }
