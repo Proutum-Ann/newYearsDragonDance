@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Lion",
+        "sprites": {
+            "left": "assets/imgs/lion_left.gif",
+            "right": "assets/imgs/lion_right.gif",
+            "up": "assets/imgs/lion_up.gif",
+            "down": "assets/imgs/lion_down.gif",
+            "idle": "assets/imgs/lion.gif"
+        },
+        "icon": "assets/imgs/lion_icon.png",
+        "available": true
+    },
+    {
+        "name": "Dragon",
+        "sprites": {
+            "left": "",
+            "right": "",
+            "up": "",
+            "down": "",
+            "idle": ""
+        },
+        "icon": "",
+        "available": false
+    }
+]

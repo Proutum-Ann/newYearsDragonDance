@@ -1,6 +1,12 @@
 const rhythm_app = Vue.createApp({
+    created () {
+        fetch('avatars.json').then(response => response.json()).then(json => {
+           this.avatars = json
+      })
+   },
     data() {
         return {
+            avatars: [],
             gameStarted: false,
             gamePaused: false,
             score: 0,
@@ -22,6 +28,17 @@ const rhythm_app = Vue.createApp({
         accuracy() {
             if (this.totalNotes === 0) return 0;
             return Math.round((this.hitNotes / this.totalNotes) * 100);
+        },
+        sprite() {
+            const pressed = e.key.toLowerCase()
+            const cSprite = ""
+            if (!['a', 's', 'd', 'f'].includes(pressed)) {
+                cSprite = this.sprites[4];
+            } else if (['a'].includes(pressed)) {
+                cSprite = this.sprites[0];
+            } else if (['s'].includes(pressed)) {
+                cSprite = this.sprites[2];
+            }
         }
     },
     methods: {

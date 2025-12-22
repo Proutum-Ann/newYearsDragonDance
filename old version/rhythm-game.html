@@ -12,7 +12,7 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="rhythm-style.css">
+        <link rel="stylesheet" href="style.css">
         <!-- Vue.js -->
         <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     </head>
@@ -122,21 +122,29 @@
                     </div>
 
                     <!-- Sprite -->
-                    <div class="sprite-area col-6 d-flex align-items-center justify-content-center">
-                        <img src="assets/imgs/dragon-dance.gif" alt="Dragon Dance" class="dragon-sprite">
+                    <div class="col-6 align-items-center justify-content-center">
+
+                        <!-- Sprite selection -->
+                        <div class="row">
+                            <div class="col-6 col-md" v-for="(avatar, index) in avatars">
+
+                            </div>
+                        </div>
+
+                        <img id="player" :src="cSprite">
                     </div>
                 </div>
 
                 <!-- Controls -->
                 <div class="game-controls">
                     <button v-if="!gameStarted" @click="startGame" class="btn btn-success btn-lg">
-                        ▶ Start Game
+                        Start Game
                     </button>
                     <button v-else @click="pauseGame" class="btn btn-warning btn-lg">
-                        ⏸ Pause
+                        Pause
                     </button>
                     <button @click="resetGame" class="btn btn-danger btn-lg">
-                        🔄 Reset
+                        Reset
                     </button>
                 </div>
 
@@ -147,7 +155,7 @@
             </div>
         </div>
 
-        <script src="rhythm-game.js"></script>
+        <script src="script.js"></script>
         <!-- Bootstrap JS -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"

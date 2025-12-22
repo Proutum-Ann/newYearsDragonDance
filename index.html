@@ -1,162 +1,55 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <title>Rhythm Game</title>
-
-        <!-- Bootstrap CSS -->
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link href="style.css" rel="stylesheet">
+        <!-- Bootstrap CSS v5.2.1 -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="style.css">
-        <!-- Vue.js -->
+        <!-- DO NOT CHANGE ANYTHING ABOVE THIS LINE-->
+        <link rel="stylesheet" href="https://use.typekit.net/vym3mmf.css">
+        <!-- Javascript Framework (e.g., vue.js) (ADD HERE) -->
         <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
     </head>
 
     <body>
-        <div id="rhythm_app">
-            <div class="game-container">
-                <!-- Header -->
-                <div class="game-header">
-                    <h1>🎵 Rhythm Game 🎵</h1>
-                    <div class="game-stats">
-                        <div class="stat">
-                            <span class="label">Score</span>
-                            <span class="value">{{ score }}</span>
-                        </div>
-                        <div class="stat">
-                            <span class="label">Combo</span>
-                            <span class="value">{{ combo }}</span>
-                        </div>
-                        <div class="stat">
-                            <span class="label">Accuracy</span>
-                            <span class="value">{{ accuracy }}%</span>
-                        </div>
-                    </div>
-                </div>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+            <div id="app">
+                <h1>{{ title }}</h1>
 
                 <div class="row">
-                    <!-- Game Area -->
-                    <div class="game-area col-6">
-                        <!-- Track Display -->
-                        <div class="track-display">
-                            <div class="lanes">
-                                <!-- Lane 1 (A key) -->
-                                <div class="lane lane-1">
-                                    <div class="hit-zone">
-                                        <div class="hit-line"></div>
-                                    </div>
-                                    <div class="notes-container">
-                                        <div v-for="note in lanes[0]" 
-                                            :key="note.id" 
-                                            class="note note-1"
-                                            :style="{ top: note.position + 'px' }">
-                                        </div>
-                                    </div>
-                                    <div class="key-indicator" :class="{ active: keysPressed.includes('a') }">
-                                        <img class="key-notes" src="assets/imgs/cakeA.png">
-                                    </div>
-                                </div>
-
-                                <!-- Lane 2 (S key) -->
-                                <div class="lane lane-2">
-                                    <div class="hit-zone">
-                                        <div class="hit-line"></div>
-                                    </div>
-                                    <div class="notes-container">
-                                        <div v-for="note in lanes[1]" 
-                                            :key="note.id" 
-                                            class="note note-2"
-                                            :style="{ top: note.position + 'px' }">
-                                        </div>
-                                    </div>
-                                    <div class="key-indicator" :class="{ active: keysPressed.includes('s') }">
-                                        <img class="key-notes" src="assets/imgs/cakeS.png">
-                                    </div>
-                                </div>
-
-                                <!-- Lane 3 (D key) -->
-                                <div class="lane lane-3">
-                                    <div class="hit-zone">
-                                        <div class="hit-line"></div>
-                                    </div>
-                                    <div class="notes-container">
-                                        <div v-for="note in lanes[2]" 
-                                            :key="note.id" 
-                                            class="note note-3"
-                                            :style="{ top: note.position + 'px' }">
-                                        </div>
-                                    </div>
-                                    <div class="key-indicator" :class="{ active: keysPressed.includes('d') }">
-                                        <img class="key-notes" src="assets/imgs/cakeD.png">
-                                    </div>
-                                </div>
-
-                                <!-- Lane 4 (F key) -->
-                                <div class="lane lane-4">
-                                    <div class="hit-zone">
-                                        <div class="hit-line"></div>
-                                    </div>
-                                    <div class="notes-container">
-                                        <div v-for="note in lanes[3]" 
-                                            :key="note.id" 
-                                            class="note note-4"
-                                            :style="{ top: note.position + 'px' }">
-                                        </div>
-                                    </div>
-                                    <div class="key-indicator" :class="{ active: keysPressed.includes('f') }">
-                                        <img class="key-notes" src="assets/imgs/cakeF.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feedback -->
-                        <div class="feedback-area">
-                            <div class="hit-feedback" :class="lastHit">{{ lastHitText }}</div>
+                    <div class="col" v-for="(avatar, index) in avatars">
+                        <div class="avatar-icon">
+                            <img src="{{ this.icon }}">
                         </div>
                     </div>
-
-                    <!-- Sprite -->
-                    <div class="col-6 align-items-center justify-content-center">
-
-                        <!-- Sprite selection -->
-                        <div class="row">
-                            <div class="col-6 col-md" v-for="(lion, index) in lions">
-
-                            </div>
-                        </div>
-
-                        <img class="player">
-                    </div>
-                </div>
-
-                <!-- Controls -->
-                <div class="game-controls">
-                    <button v-if="!gameStarted" @click="startGame" class="btn btn-success btn-lg">
-                        ▶ Start Game
-                    </button>
-                    <button v-else @click="pauseGame" class="btn btn-warning btn-lg">
-                        ⏸ Pause
-                    </button>
-                    <button @click="resetGame" class="btn btn-danger btn-lg">
-                        🔄 Reset
-                    </button>
-                </div>
-
-                <!-- Instructions -->
-                <div class="instructions">
-                    <p><strong>Press A, S, D, F keys to hit the notes!</strong></p>
                 </div>
             </div>
-        </div>
-
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
         <script src="script.js"></script>
-        <!-- Bootstrap JS -->
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
