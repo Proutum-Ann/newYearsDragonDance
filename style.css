@@ -8,12 +8,21 @@ body {
     color: #270000!important
 }
 
+h1 {
+    font-family: "highest-praise", sans-serif
+}
+
+p {
+    font-size: 20px;
+    font-family: "komet", sans-serif;
+}
+
 main {
     background-color: var(--secondary);
 }
 
 .character {
-    height: 75vh;
+    height: 100vh;
     background: var(--primary);
     margin-bottom: 5%;
     padding: 4%;
