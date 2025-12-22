@@ -22,11 +22,11 @@
     <!-- Avatar selection -->
     <div class="row the-row mx-auto px-2 justify-content-center">
       <div class="col-2 col-md-1 text-center p-2 selection" v-for="(avatar, index) in avatars" :key="index">
-        <img class="avatar-icon" :src="avatar.icon" style="height:100px" :style="{ opacity: avatar.available ? 1 : 0.5 }">
+        <a v-on:click="changeCreature(index)"><img class="avatar-icon" :src="avatar.icon" style="height:100px" :style="{ opacity: avatar.available ? 1 : 0.5 }"></a>
       </div>
     </div>
 
-    <p class="text-center">Click <b>'W', 'A', 'S', and 'D'</b> and watch the creature move!</p>
+    <p class="text-center">Click <b>'W', 'A', 'S', and 'D'</b> and watch {{ avatar.name }} move!</p>
 
     <!-- The creature -->
     <div class="container mt-4 text-center">

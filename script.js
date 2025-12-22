@@ -60,6 +60,12 @@ const vueApp = Vue.createApp({
         } else {
             this.currentState = "idle";
         }
+    },
+    changeCreature(index) {
+      if (this.avatars[index].available) {
+        this.avatarIndex = index;
+        this.currentState = "idle"; // reset state on switch
+      }
     }
   }
 });
