@@ -7,7 +7,7 @@ const vueApp = Vue.createApp({
       avatarIndex: 0,       // current avatar (Lion)
       currentState: "idle",
       currentKey: null
-    };
+    }
   },
 
   created() {
@@ -32,7 +32,6 @@ const vueApp = Vue.createApp({
       return this.avatar.sprites[this.currentState];
     }
   },
-
   methods: {
     keyDown(e) {
       if (e.repeat) return;
@@ -51,6 +50,15 @@ const vueApp = Vue.createApp({
         this.currentState = "idle";
         this.currentKey = null;
       }
+    },
+    becomeDead() {
+        isDead.value = !isDead.value
+
+        if (isDead.value === true) {
+            this.currentState = "dead";
+        } else {
+            this.currentState = "idle";
+        }
     }
   }
 });

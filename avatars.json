@@ -6,10 +6,12 @@
             "right": "assets/imgs/lion_right.gif",
             "up": "assets/imgs/lion_up.gif",
             "down": "assets/imgs/lion_down.gif",
-            "idle": "assets/imgs/lion.gif"
+            "idle": "assets/imgs/lion.gif",
+            "dead": "assets/imgs/lion_ded.png"
         },
         "icon": "assets/imgs/lion_icon.png",
-        "available": true
+        "available": true,
+        "isDead": false
     },
     {
         "name": "Dragon",
@@ -18,9 +20,11 @@
             "right": "",
             "up": "",
             "down": "",
-            "idle": ""
+            "idle": "",
+            "dead": ""
         },
         "icon": "assets/imgs/dragon_icon-ph.png",
-        "available": false
+        "available": false,
+        "isDead": false
     }
 ]

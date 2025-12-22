@@ -1,12 +1,42 @@
 body {
     overflow-x: hidden;
     align-items: center;
+    --primary: #ff1d30;
+    --secondary: #ffac30;
+    --accent: #ffd45e;
+    --accent2: #ffec43;
+    color: #270000!important
+}
+
+main {
+    background-color: var(--secondary);
 }
 
 .character {
-    height: 50vh
+    height: 75vh;
+    background: var(--primary);
+    margin-bottom: 5%;
+    padding: 4%;
+    border-radius: 10px;
+    border: var(--accent) 2vh double
 }
 
-.inactive {
-    opacity: 0.5;
+.avatar-icon {
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, var(--accent), var(--accent2));
+    transition: .4s;
+}
+
+.selection img {
+    filter: drop-shadow(0 0 5px white);
+}
+
+.the-row {
+    background-color: rgba(0,0,0,0.5);
+    border-top: solid 3vh var(--accent);
+    border-bottom: solid 3vh var(--accent);
+}
+
+.avatar-icon:hover {
+    transform: scale(1.2);
 }
